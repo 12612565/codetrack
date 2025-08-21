@@ -16,4 +16,506 @@
       --danger:#ff5c7a;        /* danger/red */
       --warn:#ffbb55;          /* warn/orange */
       --ok:#63e36f;            /* ok/green */
-      --border: #262a4a;       /* borders */
+      --border: #262a4a;       /* borders */--shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      margin:0; background:linear-gradient(180deg,#0e1120,#0b0d1a 60%, #0e1120);
+      color:var(--text);;}
+    /* Layout */
+    header{
+      position:sticky; top:0; z-index:5;
+      background:rgba(15,18,33,.75); backdrop-filter:blur(16px);
+      border-bottom:1px solid var(--border);
+      padding:14px 18px;
+      display:flex; align-items:center; gap:12px; justify-content:space-between;
+    }
+    .title{display:flex; align-items:center; gap:10px}
+    .logo{
+      width:36px; height:36px; border-radius:12px; display:grid; place-items:center;
+      background: radial-gradient(100% 100% at 0% 0%, var(--accent) 0%, #4a37bf 40%, #1b153b 100%);
+      box-shadow: var(--shadow);
+      font-weight:900; letter-spacing:.5px
+    }
+    .title h1{font-size:18px;margin:0}
+    .title small{display:block; color:var(--muted); font-size:12px;}
+    .actions{display:flex; gap:10px; align-items:center}
+    .actions input[type="search"]{
+      background:#0c0f1f; color:var(--text); border:1px solid var(--border);
+      padding:8px 10px; border-radius:12px; width:240px;
+    }
+    .btnbackground:var(--accent); color:#fff; border:none; padding:10px 14px; border-radius:12px;
+      cursor:pointer; font-weight:600; transition:transform .05s ease, filter .2s ease; box-shadow: var(--shadow);
+    }
+    .btn:hover{filter:brightness(1.05)}
+    .btn:active{transform:translateY(1px)}
+    .btn.secondary{background:#212544; color:var(--text); border:1px solid var(--border)}
+    .btn.ghost{background:transparent; border:1px solid var(--border); color:var(--text)}
+
+    main{max-width:1200px; margin:16px auto; padding:0 16px 80px}
+    .grid{display:grid; grid-template-columns:1.2fr .8fr; gap:16px}
+    @media (max-width: 980px){.grid{grid-template-columns:1fr;}}
+
+    .card{
+      background:linear-gradient(180deg, #141733, #12142b); border:1px solid var(--border);
+      border-radius:var(--radius); box-shadow:var(--shadow);
+    }
+    .card header{position:unset; padding:14px 16px; background:transparent; border-bottom:1px solid var(--border)}
+    .card header h2{margin:0; font-size:16px}
+    .card header small{color:var(--muted)}
+    .card .content{padding:14px 16px}
+
+    /* Tabs */
+    .tabs{display:flex; gap:8px; border-bottom:1px solid var(--border); padding:0 16px}
+    .tab{padding:12px 12px; cursor:pointer; border-bottom:2px solid transparent; color:var(--muted); font-weight:600}
+    .tab.active{border-bottom-color:var(--accent); color:var(--text)}
+
+    /* Lists */
+    ul.clean{list-style:none; padding:0; margin:0}
+    li.item{display:flex; align-items:center; gap:10px; padding:10px 12px; border:1px solid var(--border); background:#121430; border-radius:14px; margin-bottom:10px}
+    .pill{font-size:12px; padding:4px 8px; border-radius:999px; border:1px solid var(--border); background:#0d1026; color:var(--muted)}
+    .pill.ok{color:#0f4820; background:rgba(63, 214, 124, .15); border-color:rgba(63,214,124,.2)}
+    .pill.warn{color:#5b3a00; background:rgba(255, 187, 85, .16); border-color:rgba(255,187,85,.25)}
+    .pill.danger{color:#5b0010; background:rgba(255,92,122,.16); border-color:rgba(255,92,122,.25)}
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;}
+
+    /* Forms */
+    .row{display:flex; gap:10px; flex-wrap:wrap}
+    .row > *{flex:1 1 180px}
+    input, textarea, select{
+      width:100%; padding:10px 12px; border-radius:12px; background:#0c0f1f; border:1px solid var(--border); color:var(--text);
+    }
+    textarea{min-height:120px; resize:vertical}
+    label{display:block; font-size:12px; color:var(--muted); margin:6px 0}
+    .muted{color:var(--muted)}
+
+    .toolbar{display:flex; gap:8px; flex-wrap:wrap}
+    .toolbar .btn{padding:8px 12px}
+
+    /* Code area */
+    .codewrap{position:relative}
+    pre{
+      background:#0b0e1e; border:1px solid var(--border); padding:12px; border-radius:14px; overflow:auto; max-height:240px;
+    }
+    .badge{font-size:11px; color:var(--muted)}
+    .kbd{font-family:inherit; font-size:11px; padding:2px 6px; border:1px solid var(--border); background:#0d1026; border-radius:6px;}
+
+    footer{position:fixed; bottom:0; left:0; right:0; background:rgba(15,18,33,.8); backdrop-filter:blur(16px); border-top:1px solid var(--border); padding:10px 16px; display:flex; gap:10px; align-items:center; justify-content:space-between}
+    footer .left{display:flex; gap:10px; align-items:center}
+    .dot{width:8px; height:8px; border-radius:999px; background:var(--ok); box-shadow:0 0 0 2px rgba(99,227,111,.25)}
+    .link{color:var(--accent-2); text-decoration:none}
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="title">
+      <div class="logo">CT</div>
+      <div>
+        <h1>Code Track</h1>
+        <small>Source Code Management — local demo (no backend)</small>
+      </div>
+    </div>
+    <div class="actions">
+      <input id="search" type="search" placeholder="Search commits, files, branches… (/)" />
+      <button class="btn secondary" id="exportBtn" title="Export workspace as JSON">Export</button>
+      <button class="btn" id="newRepoBtn" title="Create repository">New Repo</button>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main>
+    <div class="grid">
+      <!-- Left: Workspace -->
+      <section class="card" id="workspaceCard">
+        <header>
+          <h2>Workspace</h2>
+          <small id="repoInfo" class="muted">No repository yet.</small>
+        </header>
+        <div class="tabs">
+          <div class="tab active" data-tab="files">Files</div>
+          <div class="tab" data-tab="staging">Staging</div>
+          <div class="tab" data-tab="commits">Commits</div>
+          <div class="tab" data-tab="branches">Branches</div>
+        </div>
+        <div class="content" id="tab-files">
+          <div class="toolbar">
+            <button class="btn" id="addFileBtn">Add File</button>
+            <button class="btn secondary" id="editFileBtn">Edit Selected</button>
+            <button class="btn ghost" id="deleteFileBtn">Delete</button>
+            <span class="badge" id="fileCount">0 files</span>
+          </div>
+          <ul class="clean" id="fileList"></ul>
+        </div>
+        <div class="content" id="tab-staging" style="display:none">
+          <div class="toolbar">
+            <button class="btn" id="stageAllBtn">Stage All</button>
+            <button class="btn secondary" id="unstageAllBtn">Unstage All</button>
+            <button class="btn" id="commitBtn">Commit</button>
+            <span class="badge">Drag files between lists to stage/unstage</span>
+          </div>
+          <div class="row">
+            <div>
+              <label>Unstaged</label>
+              <ul class="clean" id="unstaged"></ul>
+            </div>
+            <div>
+              <label>Staged</label>
+              <ul class="clean" id="staged"></ul>
+            </div>
+          </div>
+          <label>Commit Message</label>
+          <input id="commitMsg" placeholder="feat: add auth module" />
+        </div>
+        <div class="content" id="tab-commits" style="display:none">
+          <div class="toolbar">
+            <button class="btn secondary" id="revertBtn">Revert</button>
+            <button class="btn ghost" id="clearHistoryBtn">Clear History</button>
+          </div>
+          <ul class="clean" id="commitList"></ul>
+        </div>
+        <div class="content" id="tab-branches" style="display:none">
+          <div class="toolbar">
+            <button class="btn" id="newBranchBtn">New Branch</button>
+            <button class="btn secondary" id="switchBranchBtn">Switch</button>
+            <button class="btn ghost" id="mergeBtn">Merge → Main</button>
+          </div>
+          <ul class="clean" id="branchList"></ul>
+        </div>
+      </section>
+
+      <!-- Right: Editor/Preview -->
+      <section class="card">
+        <header>
+          <h2>Editor</h2>
+          <small>Write code, then add to staging & commit</small>
+        </header>
+        <div class="content">
+          <div class="row">
+            <div>
+              <label>File Name</label>
+              <input id="fileName" placeholder="src/app.js" />
+            </div>
+            <div>
+              <label>Language</label>
+              <select id="language">
+                <option>text</option>
+                <option>html</option>
+                <option>css</option>
+                <option>javascript</option>
+                <option>json</option>
+                <option>markdown</option>
+              </select>
+            </div>
+          </div>
+          <label>Content</label>
+          <textarea id="content" class="mono" placeholder="// Write your code here"></textarea>
+          <div class="toolbar" style="margin-top:8px">
+            <button class="btn" id="saveFileBtn">Save File</button>
+            <button class="btn secondary" id="resetEditorBtn">Reset</button>
+            <span class="badge">Tip: Use <span class="kbd">Ctrl</span> + <span class="kbd">S</span> to save</span>
+          </div>
+          <div class="codewrap" style="margin-top:10px">
+            <label>Preview (read-only)</label>
+            <pre id="preview" class="mono"></pre>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="left">
+      <div class="dot"></div>
+      <div class="muted">Local storage is used. Your data stays in this browser.</div>
+    </div>
+    <div>
+      <a class="link" href="#" id="importLink">Import workspace</a>
+    </div>
+  </footer>
+
+  <script>
+    // ---------------------------
+    // Code Track — Tiny SCM Demo
+    // ---------------------------
+    // Features:
+    // - Multiple repositories (stored in localStorage)
+    // - Files, staging area, commits with diffs, branches (basic)
+    // - Merge branch into main (naive, latest file wins)
+    // - Search across names and commit messages
+    // - Export / Import workspace JSON
+    // This is a learning demo; not a real Git replacement.
+
+    const $ = sel => document.querySelector(sel);
+    const $$ = sel => Array.from(document.querySelectorAll(sel));
+</div>
+    </div>
+    <div class="actions">
+      <input id="search" type="search" placeholder="Search commits, files, branches… (/)" />
+      <button class="btn secondary" id="exportBtn" title="Export workspace as JSON">Export</button>
+      <button class="btn" id="newRepoBtn" title="Create repository">New Repo</button>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main>
+    <div class="grid">
+      <!-- Left: Workspace -->
+      <section class="card" id="workspaceCard">
+        <header>
+          <h2>Workspace</h2>
+          <small id="repoInfo" class="muted">No repository yet.</small>
+        </header>
+        <div class="tabs">
+          <div class="tab active" data-tab="files">Files</div>
+          <div class="tab" data-tab="staging">Staging</div>
+          <div class="tab" data-tab="commits">Commits</div>
+          <div class="tab" data-tab="branches">Branches</div>
+        </div>
+        <div class="content" id="tab-files">
+          <div class="toolbar">
+            <button class="btn" id="addFileBtn">Add File</button>
+            <button class="btn secondary" id="editFileBtn">Edit Selected</button>
+            <button class="btn ghost" id="deleteFileBtn">Delete</button>
+            <span class="badge" id="fileCount">0 files</span>
+          </div>
+          <ul class="clean" id="fileList"></ul>
+        </div>
+        <div class="content" id="tab-staging" style="display:none">
+          <div class="toolbar">
+            <button class="btn" id="stageAllBtn">Stage All</button>
+            <button class="btn secondary" id="unstageAllBtn">Unstage All</button>
+            <button class="btn" id="commitBtn">Commit</button>
+            <span class="badge">Drag files between lists to stage/unstage</span>
+          </div>
+          <div class="row">
+            <div>
+              <label>Unstaged</label>
+              <ul class="clean" id="unstaged"></ul>
+            </div>
+            <div>
+              <label>Staged</label>
+              <ul class="clean" id="staged"></ul>
+            </div>
+          </div>
+          <label>Commit Message</label>
+          <input id="commitMsg" placeholder="feat: add auth module" />
+        </div>
+        <div class="content" id="tab-commits" style="display:none">
+          <div class="toolbar">
+            <button class="btn secondary" id="revertBtn">Revert</button>
+            <button class="btn ghost" id="clearHistoryBtn">Clear History</button>
+          </div>
+          <ul class="clean" id="commitList"></ul>
+        </div>
+        <div class="content" id="tab-branches" style="display:none">
+          <div class="toolbar">
+            <button class="btn" id="newBranchBtn">New Branch</button>
+            <button class="btn secondary" id="switchBranchBtn">Switch</button>
+            <button class="btn ghost" id="mergeBtn">Merge → Main</button>
+          </div>
+          <ul class="clean" id="branchList"></ul>
+        </div>
+      </section>
+
+      <!-- Right: Editor/Preview -->
+      <section class="card">
+        <header>
+          <h2>Editor</h2>
+          <small>Write code, then add to staging & commit</small>
+        </header>
+        <div class="content">
+          <div class="row">
+            <div>
+              <label>File Name</label>
+              <input id="fileName" placeholder="src/app.js" />
+            </div>
+            <div>
+              <label>Language</label>
+              <select id="language">
+                <option>text</option>
+                <option>html</option>
+                <option>css</option>
+                <option>javascript</option>
+                <option>json</option>
+                <option>markdown</option>
+              </select>
+            </div>
+          </div>
+          <label>Content</label>
+          <textarea id="content" class="mono" placeholder="// Write your code here"></textarea>
+          <div class="toolbar" style="margin-top:8px">
+            <button class="btn" id="saveFileBtn">Save File</button>
+            <button class="btn secondary" id="resetEditorBtn">Reset</button>
+            <span class="badge">Tip: Use <span class="kbd">Ctrl</span> + <span class="kbd">S</span> to save</span>
+          </div>
+          <div class="codewrap" style="margin-top:10px">
+            <label>Preview (read-only)</label>
+            <pre id="preview" class="mono"></pre>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="left">
+      <div class="dot"></div>
+      <div class="muted">Local storage is used. Your data stays in this browser.</div>
+    </div>
+    <div>
+      <a class="link" href="#" id="importLink">Import workspace</a>
+    </div>
+  </footer>
+
+  <script>
+    // ---------------------------
+    // Code Track — Tiny SCM Demo
+    // ---------------------------
+    // Features:
+    // - Multiple repositories (stored in localStorage)
+    // - Files, staging area, commits with diffs, branches (basic)
+    // - Merge branch into main (naive, latest file wins)
+    // - Search across names and commit messages
+    // - Export / Import workspace JSON
+    // This is a learning demo; not a real Git replacement.
+
+    const $ = sel => document.querySelector(sel);
+    const $$ = sel => Array.from(document.querySelectorAll(sel));
+
+    // ---------- Data Model ----------
+    const STORAGE_KEY = 'code-track::workspace';
+    let state = load() || {
+      repos: [],
+      activeRepoId: null,
+      lastId: 0,
+    };
+
+    // Repo shape
+    // { id, name, createdAt, branches: { main: Branch, ... }, activeBranch: 'main' }
+    // Branch shape
+    // { name, files: { path: { path, language, content, updatedAt } }, staging: Set<path>, commits: Commit[] }
+    // Commit shape
+    // { id, message, timestamp, branch, changes: { path: { before, after } } }
+
+    // ---------- Utilities ----------
+    function uid() { return ++state.lastId; }
+    function nowISO() { return new Date().toISOString(); }
+    function save() { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
+    function load() { try { return JSON.parse(localStorage.getItem(STORAGE_KEY)); } catch(e){ return null; } }
+
+    function activeRepo(){ return state.repos.find(r => r.id === state.activeRepoId) || null; }
+    function activeBranch(){ const repo = activeRepo(); return repo ? repo.branches[repo.activeBranch] : null; }
+
+    function setActiveRepo(id){ state.activeRepoId = id; save(); renderAll(); }
+
+    function createRepo(name){
+      const id = uid();
+      const repo = {
+        id, name, createdAt: nowISO(), activeBranch: 'main',
+        branches: { main: { name:'main', files:{}, staging:[], commits:[] } }
+      };
+      state.repos.push(repo);
+      state.activeRepoId = id;
+      save();
+      renderAll();
+    }
+
+    function listFiles(){ const br = activeBranch(); return br ? Object.values(br.files) : []; }
+    function setFile(path, language, content){
+      const br = activeBranch(); if(!br) return;
+      br.files[path] = { path, language, content, updatedAt: nowISO() };
+      if(!br.staging.includes(path)) br.staging.push(path);
+      save();
+      renderFiles(); renderStaging();
+    }
+    function deleteFile(path){ const br=activeBranch(); if(!br) return; delete br.files[path]; br.staging=br.staging.filter(p=>p!==path); save(); renderFiles(); renderStaging(); }
+
+    function commit(message){
+      const repo = activeRepo(); const br = activeBranch(); if(!repo||!br) return;
+      const changes = {};
+      const paths = br.staging.slice();
+      paths.forEach(p => {
+        const file = br.files[p];
+        const before = lastContentBefore(p, br.commits);
+        changes[p] = { before, after: file ? file.content : '' };
+      });
+      const c = { id: uid(), message: message || 'chore: empty', timestamp: nowISO(), branch: repo.activeBranch, changes };
+      br.commits.unshift(c); // newest first
+      br.staging = [];
+      save();
+      renderCommits(); renderStaging(); renderFiles();
+    }
+
+    function lastContentBefore(path, commits){
+      for (const c of commits){ if (c.changes[path]) return c.changes[path].after; }
+      return '';
+    }
+
+    function revert(commitId){
+      const br = activeBranch(); if(!br) return;
+      const idx = br.commits.findIndex(c => c.id === commitId); if(idx===-1) return;
+      const commit = br.commits[idx];
+      // Revert changes
+      Object.entries(commit.changes).forEach(([path,chg])=>{
+        if(chg.before === '') delete br.files[path]; else br.files[path] = { path, language: guessLang(path), content: chg.before, updatedAt: nowISO() };
+      });
+      // Record revert commit
+      const message = ⁠ revert: ${commit.message} ⁠;
+      const rev = { id: uid(), message, timestamp: nowISO(), branch: br.name, changes: Object.fromEntries(Object.entries(commit.changes).map(([p,chg])=>[p,{ before: chg.after, after: chg.before }])) };
+      br.commits.unshift(rev);
+      save();
+      renderCommits(); renderFiles();
+    }
+
+    function guessLang(path){
+      if(path.endsWith('.html')) return 'html';
+      if(path.endsWith('.css')) return 'css';
+      if(path.endsWith('.js')) return 'javascript';
+      if(path.endsWith('.json')) return 'json';
+      if(path.endsWith('.md')) return 'markdown';
+      return 'text';
+    }
+
+    // Branches
+    function newBranch(name){
+      const repo = activeRepo(); if(!repo||repo.branches[name]) return;
+      const main = repo.branches[repo.activeBranch];
+      repo.branches[name] = { name, files: JSON.parse(JSON.stringify(main.files)), staging: [], commits: [] };
+      save(); renderBranches();
+    }
+    function switchBranch(name){ const repo=activeRepo(); if(!repo||!repo.branches[name]) return; repo.activeBranch = name; save(); renderAll(); }
+    function mergeIntoMain(){
+      const repo = activeRepo(); if(!repo) return; if(repo.activeBranch==='main') return;
+      const from = repo.branches[repo.activeBranch]; const to = repo.branches['main'];
+      const changes = {};
+      Object.values(from.files).forEach(f=>{
+        const before = to.files[f.path]?.content || '';
+        to.files[f.path] = JSON.parse(JSON.stringify(f));
+        changes[f.path] = { before, after: f.content };
+      });
+      const c = { id: uid(), message: ⁠ merge: ${from.name} → main ⁠, timestamp: nowISO(), branch: 'main', changes };
+      to.commits.unshift(c);
+      save(); renderBranches(); renderFiles(); renderCommits();
+    }
+
+    // Search
+    function matchesQuery(q, text){ return text.toLowerCase().includes(q.toLowerCase()); }
+
+    // ---------- Rendering ----------
+    function renderAll(){ renderHeader(); renderFiles(); renderStaging(); renderCommits(); renderBranches(); updatePreview(); }
+
+    function renderHeader(){
+      const repo = activeRepo();
+      $('#repoInfo').textContent = repo ? ⁠ ${repo.name} • branch ${repo.activeBranch} ⁠ : 'No repository yet.';
+    }
+    // ---------- Data Model ----------
+    const STORAGE_KEY = 'code-track::workspace';
+    let state = load() || {
+      repos: [],
+      activeRepoId: null,
+      lastId: 0,
+    };{}};
